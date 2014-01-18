@@ -52,4 +52,13 @@ class ApplicationController < ActionController::Base
   def find_user user
     return User.find_by_identifier user.identifier
   end
+
+  def generate_code
+    begin
+        word = RandomWord.nouns.next
+        matches = /^[a-z]{5,12}$/ =~ word
+        exists = Playlist.find_by_code word
+    end until  matches && !exists
+    return word
+  end
 end

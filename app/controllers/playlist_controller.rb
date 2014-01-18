@@ -12,7 +12,7 @@ class PlaylistController < ApplicationController
     if params[:code]
       @playlist.code = params[:code]
     else
-      @playlist.code = RandomWord.nouns.next
+      @playlist.code = generate_code
     end
     render "show"
   end
