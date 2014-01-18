@@ -1,6 +1,6 @@
 Queueup::Application.routes.draw do
   get "code/random"
-  get "user/auth"
+  post "user/auth"
   
   post "playlist/create"
   post "playlist/join"

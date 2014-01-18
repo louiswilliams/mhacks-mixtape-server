@@ -21,12 +21,20 @@ class PlaylistController < ApplicationController
   def create
     @playlist = Playlist.new
     if params[:code]
-      @playlist.code = params[:code]
+      @playlist.code = params[:code].downcase
     else
       @playlist.code = generate_code
     end
     @playlist.user = @user
-    redirect_to "/playlist/#{@playlist.code}"
+    if Playlist.find_by_code(@playlist.code).count == 0
+      @playlist.save
+      respond_to do |format|
+        format.json {render :json => @playlist}
+        format.html {redirect_to "/playlist/#{@playlist.code}"}
+      end
+    else
+      redirect_to "/playlist/#{@playlist.code}"
+    end
   end
 
   def delete
@@ -64,7 +72,7 @@ class PlaylistController < ApplicationController
   def playlist_params
     @playlist = Playlist.new
     if params[:code]
-      @playlist = Playlist.find_by_code params[:code]
+      @playlist = Playlist.find_by_code params[:code].downcase
       if !@playlist
         redirect_to root_path
       end
