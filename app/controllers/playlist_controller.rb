@@ -4,6 +4,7 @@ class PlaylistController < ApplicationController
   end
 
   def show
+    @tracks = @playlist.tracks
   end
 
   def create
