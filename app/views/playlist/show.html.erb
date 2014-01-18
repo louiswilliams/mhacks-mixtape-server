@@ -1,1 +1,41 @@
 <h1><%= @playlist.code %></h1>
+<%= @tracks.each do |track| %>
+    <% data = Spotify.lookup(track.url) %>
+    <div class="track_list_item">
+        <%= "#{data['artists'][0]['name']} - #{data['name']} (#{data['album']['name']})" %><br>
+    </div>
+<% end %>
+<%= form_tag "/playlist/#{@playlist.code}/add" do |f| %>
+    <input type="text" name="track_search" id="track_search" placeholder="Ex: Bound 2">
+    <div id="search_results"></div>
+<% end %>
+
+<script type="text/javascript">
+playlistCode = "<%= @playlist.code %>";
+
+$("#track_search").keypress(function(e) {
+    query = $("#track_search").val();
+    if (query.length > 0) {
+        $.getJSON("http://ws.spotify.com/search/1/track.json", {q: query}, function(json) {
+            $("#search_results").html("");
+            $.each(json["tracks"], function(i, track) {
+                if (i < 5) {
+                    $("#search_results").append(result_track_format(track));
+                } else {
+                    return false;
+                }
+            })
+        });
+    }
+})
+
+function result_track_format(track) {
+    html = "<div class='search_result_item'>";
+    html += "<button class='track_result' name='track_url' value='" + track["href"] + "'>";
+    html += track["artists"][0]["name"] + " - " + track["name"] + " (" + track["album"]["name"] + ")";
+    html += "</button></div>";
+    return html;
+}
+
+
+</script>

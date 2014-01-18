@@ -35,7 +35,13 @@ class PlaylistController < ApplicationController
   def add_track
     @track = Track.new
     @track.url = params[:track_url]
-    
+    @track.playlist = @playlist
+    lookup = Spotify.lookup(params[:track_url])
+    if lookup
+      @track.save
+    end
+    redirect_to "/playlist/#{@playlist.code}"
+
    end
 
   def remove_track
