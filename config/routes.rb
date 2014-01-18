@@ -1,4 +1,5 @@
 Queueup::Application.routes.draw do
+  get "code/random"
   get "user/auth"
   get "playlist/:code" => "playlist#show"
   post "playlist/:code/add" => "playlist#add_track"

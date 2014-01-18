@@ -44,3 +44,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "random-word", "~> 1.3.0"
