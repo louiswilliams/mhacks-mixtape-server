@@ -1,10 +1,20 @@
 class PlaylistController < ApplicationController
   before_filter :playlist_params, :only => [:show, :add_track, :remove_track, :delete]
+  before_filter :authenticate_user!, :only => [:create, :delete, :remove_track]
   def index
+
   end
 
   def show
     @tracks = @playlist.tracks
+    respond_to do |format|
+      format.html
+      format.json { render :json => @playlist.to_json(:include => :tracks)}
+    end
+  end
+
+  def join
+    redirect_to "/playlist/#{params[:code]}"
   end
 
   def create
@@ -14,14 +24,19 @@ class PlaylistController < ApplicationController
     else
       @playlist.code = generate_code
     end
-    render "show"
+    @playlist.user = @user
+    redirect_to "/playlist/#{@playlist.code}"
   end
 
   def delete
+    @playlist.destroy
   end
 
   def add_track
-  end
+    @track = Track.new
+    @track.url = params[:track_url]
+    
+   end
 
   def remove_track
   end

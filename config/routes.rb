@@ -1,13 +1,17 @@
 Queueup::Application.routes.draw do
+  get "spotify/search"
   get "code/random"
   get "user/auth"
   
   post "playlist/create"
+  post "playlist/join"
   get "playlist/:code" => "playlist#show"
   post "playlist/:code/add" => "playlist#add_track"
   post "playlist/:code/remove" => "playlist#remove_track"
   post "playlist/:code/delete" => "playlist#delete"
   post "playlist/:code/vote" => "playlist#vote"
+
+  get "spotify/search/:query" => "spotify#search"
 
   root "playlist#index"
   # The priority is based upon order of creation: first created -> highest priority.

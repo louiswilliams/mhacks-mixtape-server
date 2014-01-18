@@ -1,7 +1,7 @@
-<%= form_tag "/playlist/#{@playlist.code}" do |f| %>
-<input placeholder="playlist" type="text" maxlength="10" onkeyup="this.value = this.value.replace(/[^a-zA-Z]/, '')"/>
+<%= form_tag "/playlist/join" do |f| %>
+<input placeholder="playlist" type="text" name="code" maxlength="10" onkeyup="this.value = this.value.replace(/[^a-zA-Z]/, '')"/>
 <br>
         
-<button type="submit" onclick="playlistJoin()">Join</button>
+<button type="submit">Join</button>
 
 <% end %>
