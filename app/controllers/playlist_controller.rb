@@ -1,6 +1,5 @@
 class PlaylistController < ApplicationController
   def index
-    @playlist = Playlist.new
   end
 
   def show
