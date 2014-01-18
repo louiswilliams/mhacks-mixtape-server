@@ -26,14 +26,14 @@ class PlaylistController < ApplicationController
       @playlist.code = generate_code
     end
     @playlist.user = @user
-    if Playlist.find_by_code(@playlist.code).count == 0
+    if !Playlist.find_by_code(@playlist.code)
       @playlist.save
       respond_to do |format|
         format.json {render :json => @playlist}
         format.html {redirect_to "/playlist/#{@playlist.code}"}
       end
     else
-      redirect_to "/playlist/#{@playlist.code}"
+      redirect_to root_path
     end
   end
 
