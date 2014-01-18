@@ -1,4 +1,13 @@
 Queueup::Application.routes.draw do
+  get "playlist/index"
+  get "playlist/show"
+  get "playlist/create"
+  get "playlist/delete"
+  get "playlist/add_track"
+  get "playlist/remove_track"
+  get "playlist/vote"
+
+  root "playlist#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
