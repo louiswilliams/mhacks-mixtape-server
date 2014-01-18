@@ -1,6 +1,6 @@
 class PlaylistController < ApplicationController
+  before_filter :only => [:show, :add_track, :remove_track, :delete]
   def index
-
   end
 
   def show
@@ -31,6 +31,9 @@ class PlaylistController < ApplicationController
     @playlist = Playlist.new
     if params[:code]
       @playlist = Playlist.find_by_code params[:code]
+      if !@playlist
+        redirect_to root_path
+      end
     else
       redirect_to root_path
     end
