@@ -1,10 +1,11 @@
 Queueup::Application.routes.draw do
   get "code/random"
   get "user/auth"
+  
+  post "playlist/create"
   get "playlist/:code" => "playlist#show"
   post "playlist/:code/add" => "playlist#add_track"
   post "playlist/:code/remove" => "playlist#remove_track"
-  post "playlist/:code/create" => "playlist#create"
   post "playlist/:code/delete" => "playlist#delete"
   post "playlist/:code/vote" => "playlist#vote"
 

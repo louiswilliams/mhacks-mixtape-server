@@ -1,2 +1,7 @@
-<h1>Playlist#index</h1>
-<p>Find me in app/views/playlist/index.html.erb</p>
+<%= form_tag playlist_create_path do |f| %>
+<input placeholder="playlist" type="text" maxlength="10" onkeyup="this.value = this.value.replace(/[^a-zA-Z]/, '')"/>
+<br>
+        
+<button type="submit" onclick="playlistJoin()">Join</button>
+
+<% end %>

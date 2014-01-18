@@ -14,6 +14,7 @@ class PlaylistController < ApplicationController
     else
       @playlist.code = RandomWord.nouns.next
     end
+    render "show"
   end
 
   def delete

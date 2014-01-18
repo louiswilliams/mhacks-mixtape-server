@@ -48,4 +48,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "random-word", "~> 1.3.0"
+gem "random-word", "~> 1.2.0"
