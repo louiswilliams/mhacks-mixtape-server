@@ -7,9 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>QueueUp</h1>
+<div class="centered">
+    <%= image_tag("queueup_logo.png", :id => "logo") %>
 
-<%= yield %>
+    <%= yield %>
+</div>
 
 </body>
 </html>

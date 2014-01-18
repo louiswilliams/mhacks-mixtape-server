@@ -1,19 +1,25 @@
-<h1><%= @playlist.code %></h1>
-<%= @tracks.each do |track| %>
+<h1>Code: <%= @playlist.code %></h1>
+<% @tracks.each do |track| %>
     <% data = Spotify.lookup(track.url) %>
+    <% votes = Vote.where("anonymous = ? AND track_id = ?",session[:user_identifier], track.id).count %>
+
     <div class="track_list_item">
-        <%= "#{data['artists'][0]['name']} - #{data['name']} (#{data['album']['name']})" %><br>
+    <button class="QupButton Upvote" name="track_id" value="<%= track.id %>"> + </button>
+    <span id="SongData">
+        <%= data["track"]["artists"][0]["name"] + " - " + data["track"]["name"] + " (" + data["track"]["album"]["name"] + ")" %>
+    </span>
+    <div class="voteCount"><%= votes %></div>
     </div>
 <% end %>
 <%= form_tag "/playlist/#{@playlist.code}/add" do |f| %>
-    <input type="text" name="track_search" id="track_search" placeholder="Ex: Bound 2">
-    <div id="search_results"></div>
+    <input class="QupInput" type="text" name="track_search" id="track_search" placeholder="Search...">
+    <span id="search_results"></span>
 <% end %>
 
 <script type="text/javascript">
 playlistCode = "<%= @playlist.code %>";
 
-$("#track_search").keypress(function(e) {
+$("#track_search").keyup(function(e) {
     query = $("#track_search").val();
     if (query.length > 0) {
         $.getJSON("http://ws.spotify.com/search/1/track.json", {q: query}, function(json) {
@@ -29,9 +35,16 @@ $("#track_search").keypress(function(e) {
     }
 })
 
+$(".Upvote").click(function(event) {
+    id = $(this).val();
+    $.post("/playlist/" + playlistCode + "/vote", {track_id: id}, function(data) {
+        alert(data);
+    });
+});
+
 function result_track_format(track) {
     html = "<div class='search_result_item'>";
-    html += "<button class='track_result' name='track_url' value='" + track["href"] + "'>";
+    html += "<button class='QupButton' name='track_url' value='" + track["href"] + "'>";
     html += track["artists"][0]["name"] + " - " + track["name"] + " (" + track["album"]["name"] + ")";
     html += "</button></div>";
     return html;

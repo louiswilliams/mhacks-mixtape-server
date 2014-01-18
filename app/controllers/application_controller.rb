@@ -29,13 +29,24 @@ class ApplicationController < ActionController::Base
         return false
       end
     elsif params[:anonymous]
-      session[:user_identifier] = :anonymous
+      anonymize_user
     else
       return false
     end
 
     session[:user_identifier] = user.identifier
     return true
+  end
+
+  def is_anonymous?
+    return session[:anonymous]
+  end
+
+  def anonymize_user
+    if !session[:anonymous]
+      session[:anonymous] = true 
+      session[:user_identifier] = Time.now
+    end
   end
 
   def get_user

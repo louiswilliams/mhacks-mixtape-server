@@ -1,6 +1,7 @@
 class PlaylistController < ApplicationController
   before_filter :playlist_params, :only => [:show, :add_track, :remove_track, :delete]
   before_filter :authenticate_user!, :only => [:create, :delete, :remove_track]
+  before_filter :anonymize_user, :only => [:show]
   def index
 
   end
@@ -48,6 +49,16 @@ class PlaylistController < ApplicationController
   end
 
   def vote
+    if is_anonymous?
+      puts "Anony"
+      votes = Vote.where("anonymous = ? AND  track_id = ?",session[:user_identifier],params[:track_id])
+      if votes.length == 0
+        @vote = Vote.new
+        @vote.track_id = params[:track_id]
+        @vote.anonymous = session[:user_identifier]
+        @vote.save
+      end
+    end
   end
 
   def playlist_params

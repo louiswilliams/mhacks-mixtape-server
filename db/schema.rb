@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118065749) do
+ActiveRecord::Schema.define(version: 20140118160451) do
 
   create_table "playlists", force: true do |t|
     t.string   "code"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140118065749) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "anonymous"
   end
 
   add_index "votes", ["track_id"], name: "index_votes_on_track_id"

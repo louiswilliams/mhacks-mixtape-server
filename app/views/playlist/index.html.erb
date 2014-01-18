@@ -1,7 +1,7 @@
 <%= form_tag "/playlist/join" do |f| %>
-<input placeholder="playlist" type="text" name="code" maxlength="10" onkeyup="this.value = this.value.replace(/[^a-zA-Z]/, '')"/>
+<input class="QupInput" placeholder="playlist" type="text" name="code" maxlength="10" onkeyup="this.value = this.value.replace(/[^a-zA-Z]/, '')"/>
 <br>
         
-<button type="submit">Join</button>
+<button class="QupButton" id="Create" type="submit">Join</button>
 
 <% end %>
