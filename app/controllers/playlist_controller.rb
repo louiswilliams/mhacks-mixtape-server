@@ -1,5 +1,5 @@
 class PlaylistController < ApplicationController
-  before_filter :only => [:show, :add_track, :remove_track, :delete]
+  before_filter :playlist_params, :only => [:show, :add_track, :remove_track, :delete]
   def index
   end
 
