@@ -1,11 +1,11 @@
 Queueup::Application.routes.draw do
-  get "playlist/index"
-  get "playlist/show"
-  get "playlist/create"
-  get "playlist/delete"
-  get "playlist/add_track"
-  get "playlist/remove_track"
-  get "playlist/vote"
+  get "user/auth"
+  get "playlist/:code" => "playlist#show"
+  post "playlist/:code/add" => "playlist#add_track"
+  post "playlist/:code/remove" => "playlist#remove_track"
+  post "playlist/:code/create" => "playlist#create"
+  post "playlist/:code/delete" => "playlist#delete"
+  post "playlist/:code/vote" => "playlist#vote"
 
   root "playlist#index"
   # The priority is based upon order of creation: first created -> highest priority.

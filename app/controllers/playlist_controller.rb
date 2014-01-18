@@ -1,11 +1,13 @@
 class PlaylistController < ApplicationController
   def index
+    
   end
 
   def show
   end
 
   def create
+    @playlist = Playlist.new 
   end
 
   def delete
