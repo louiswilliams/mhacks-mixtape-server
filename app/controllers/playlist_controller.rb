@@ -8,9 +8,12 @@ class PlaylistController < ApplicationController
 
   def show
     @tracks = @playlist.tracks
+    @tracks.sort! do |a, b|
+      a.votes.count <=> b.votes.count
+    end
     respond_to do |format|
       format.html
-      format.json { render :json => @playlist.to_json(:include => :tracks)}
+      format.json { render :json => {:playlist => @playlist, :tracks => @tracks}}
     end
   end
 

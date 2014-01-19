@@ -1,7 +1,7 @@
 <p>Code: <%= @playlist.code.upcase %></p>
 <% @tracks.each do |track| %>
     <% data = Spotify.lookup(track.url) %>
-    <% votes = Vote.where("anonymous = ? AND track_id = ?",session[:user_identifier], track.id).count %>
+    <% votes = track.votes.count %>
 
     <div class="track_list_item">
     <button class="Upvote" name="track_id" value="<%= track.id %>"> + <span class="voteCount"><%= votes %></span></button>
