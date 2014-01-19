@@ -1,4 +1,4 @@
-<p>Code: <%= @playlist.code %></p>
+<p>Code: <%= @playlist.code.upcase %></p>
 <% @tracks.each do |track| %>
     <% data = Spotify.lookup(track.url) %>
     <% votes = Vote.where("anonymous = ? AND track_id = ?",session[:user_identifier], track.id).count %>
