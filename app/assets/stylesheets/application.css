@@ -18,19 +18,25 @@ html {
 }
 
 body {
-    width: 500px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
-    text-align:center;
+    #text-align:center;
 }
 
+p {
+    color:#FFFFFF;
+    font-size:30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+}
 .centered {
     text-align:center;   
 }
 
 #logo{
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
 }
 
 .QupInput{
@@ -47,6 +53,15 @@ body {
     width: 232px;
 }
 
+.search_result_item{
+    width:90%px;
+
+}
+
+#sp-list{
+    height: 420px;   
+}
+
 .QupButton{
     color: #ffffff;
     background-color: #74b301;
@@ -54,11 +69,12 @@ body {
     border-color:#74b301;
     border-radius: 2px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 26px;
+    font-size: 30px;
     margin-left:0px;
     margin-right:0px;
     margin-top:0px;
 }
+
 
 #Create{
     width: 117px;
@@ -72,45 +88,132 @@ body {
     padding-bottom:2px;
 }
 
-#Upvote{
-    padding-top:4px;
-    padding-bottom:2px;
-    padding-left: 16px;
-    padding-right: 16px;
+.Upvote{
+
+    font-size:30px;
+    color: #000000;
+    background-color:#ffffff;
+    height: 40px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-style:outset;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    text-align:left;
+    text-overflow:ellipsis-word;
+    display:inline-flex;
+    white-space:nowrap;
+    overflow: hidden;
+    
+    width:12%;
     
     margin-left: 10%;
-    margin-right: auto;
+    
+    padding-top:7px;
+    padding-bottom:40px;
+    padding-left:2px;
+}
+
+.UpvoteClone{
+    
+    font-size:30px;
+    color: #000000;
+    background-color:#313131;
+    height: 40px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-style:none;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    text-align:left;
+    text-overflow:ellipsis;
+    display:inline-flex;
+    white-space:nowrap;
+    overflow: hidden;
+    
+    
+    width:12%;
+    
+    margin-left: 10%;
+    
+    padding-top:7px;
+    padding-bottom:40px;
+    padding-left:2px;
 }
 
 #SongData{
     font-size: 30px;
     color: #000000;
     background-color: #ffffff;
+    height: 40px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border-style:outset;
-    text-align:center;
-    border-radius:2px;
-    
-    text-overflow:ellipsis;
-    
-    width: 70%;
-    max-width: 70%;
-    
-    overflow:hidden;
-    display:inline-flex;
-    white-space:nowrap;
-    
-    text-align: left;
-    
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-left-width: 1px;
     border-right-width: 1px;
+    text-align:left;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display:inline-flex;
+    white-space:nowrap;
     
-    margin-top:4px;
+    width: 60%;
     
-    padding-top:4px;
-    padding-bottom:2px;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-top: 7px;
+    padding-right:12px;
+    padding-left: 2px;
+
+}
+
+#track_search{
+
+    font-size: 30px;
+    color: #000000;
+    background-color: #ffffff;
+    height: 40px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-style:outset;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    text-align:center;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display:inline-flex;
+    white-space:nowrap;
     
+    
+    margin-right:10%;
+    margin-left:0;
+    
+    width: 60%;
+    text-align:left;
+    
+    padding-top:7px;
+    padding-right:12px;
+    padding-left:2px;
+    
+
+}
+
+#playlist_list {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+#playlist_list h2 pre.code {
+   background: rgba(255,255,255,0.2);
+   border: 0px solid #ffffff;
+   border-radius: 5px;    
+   color: #FFFFFF;
+}
+
+#playlist_list h2 pre.code a{
+    font-size: 16pt;
+    color: #FFFFFF;
 }

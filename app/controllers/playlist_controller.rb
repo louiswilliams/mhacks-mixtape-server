@@ -45,10 +45,10 @@ class PlaylistController < ApplicationController
     @track = Track.new
     @track.url = params[:track_url]
     @track.playlist = @playlist
-    # lookup = Spotify.lookup(params[:track_url])
-    # if lookup
+    lookup = Spotify.lookup(params[:track_url])
+    if lookup
       @track.save
-    # end
+    end
     redirect_to "/playlist/#{@playlist.code}"
 
    end

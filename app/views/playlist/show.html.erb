@@ -1,18 +1,19 @@
-<h1>Code: <%= @playlist.code %></h1>
+<p>Code: <%= @playlist.code %></p>
 <% @tracks.each do |track| %>
     <% data = Spotify.lookup(track.url) %>
     <% votes = Vote.where("anonymous = ? AND track_id = ?",session[:user_identifier], track.id).count %>
 
     <div class="track_list_item">
-    <button class="QupButton Upvote" name="track_id" value="<%= track.id %>"> + </button>
+    <button class="Upvote" name="track_id" value="<%= track.id %>"> + <span class="voteCount"><%= votes %></span></button>
     <span id="SongData">
         <%= data["track"]["artists"][0]["name"] + " - " + data["track"]["name"] + " (" + data["track"]["album"]["name"] + ")" %>
     </span>
-    <div class="voteCount"><%= votes %></div>
     </div>
 <% end %>
 <%= form_tag "/playlist/#{@playlist.code}/add" do |f| %>
-    <input class="QupInput" type="text" name="track_search" id="track_search" placeholder="Search...">
+    <button class="UpvoteClone"></button>
+
+   <input type="text" name="track_search" id="track_search" placeholder="Search...">
     <span id="search_results"></span>
 <% end %>
 
