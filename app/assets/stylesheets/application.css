@@ -28,16 +28,20 @@ p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     
 }
+
+form.home {
+    margin-top: 100px;
+}
 .centered {
     text-align:center;   
-    width: 600px;
+    width: 480px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #logo{
     padding-top: 50px;
-    padding-bottom: 0px;
+    padding-bottom: 35px;
 }
 
 .QupInput{
@@ -55,7 +59,7 @@ p {
 }
 
 .search_result_item button{
-    width:543px;
+    width:423px;
     float:right;
 }
 
@@ -129,7 +133,7 @@ p {
     display:inline-block;
     white-space:nowrap;
     float:right;
-    width: 538px;
+    width: 418px;
     
     padding-top: 7px;
     padding-right:12px;
@@ -156,7 +160,7 @@ p {
     margin-right:0px;
     margin-left:0;
     float: right;
-    width: 538px;
+    width: 418px;
     text-align:left;
     
     padding-top:7px;
