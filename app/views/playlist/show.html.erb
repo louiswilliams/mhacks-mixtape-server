@@ -11,10 +11,8 @@
     </div>
 <% end %>
 <%= form_tag "/playlist/#{@playlist.code}/add" do |f| %>
-    <button class="UpvoteClone"></button>
-
    <input type="text" name="track_search" id="track_search" placeholder="Search...">
-    <span id="search_results"></span>
+    <div id="search_results"></div>
 <% end %>
 
 <script type="text/javascript">
