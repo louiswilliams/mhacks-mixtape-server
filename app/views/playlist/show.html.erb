@@ -35,9 +35,11 @@ $("#track_search").keyup(function(e) {
 })
 
 $(".Upvote").click(function(event) {
-    id = $(this).val();
+    $vote = $(this);
+    id = $vote.val();
+
     $.post("/playlist/" + playlistCode + "/vote", {track_id: id}, function(data) {
-        // alert(data);
+        $vote.children(".voteCount").html(data["votes"]);
     });
 });
 

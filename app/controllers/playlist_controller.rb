@@ -7,9 +7,8 @@ class PlaylistController < ApplicationController
   end
 
   def show
-    @tracks = @playlist.tracks
-    @tracks.sort! do |a, b|
-      a.votes.count <=> b.votes.count
+    @tracks = @playlist.tracks.sort_by! do |t|
+      -t.votes.count
     end
     respond_to do |format|
       format.html
@@ -26,7 +25,7 @@ class PlaylistController < ApplicationController
     if params[:code]
       @playlist.code = params[:code].downcase
     else
-      @playlist.code = generate_code
+      @playlist.code = generate_cod
     end
     @playlist.user = @user
     if !Playlist.find_by_code(@playlist.code)
@@ -77,6 +76,7 @@ class PlaylistController < ApplicationController
         @vote.save
       end
     end
+    render json: {:votes => Track.find(params[:track_id]).votes.count}
   end
 
   def playlist_params
