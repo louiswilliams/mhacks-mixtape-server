@@ -19,9 +19,7 @@ html {
 
 body {
     width: auto;
-    margin-left: auto;
-    margin-right: auto;
-    #text-align:center;
+    text-align:center;
 }
 
 p {
@@ -32,6 +30,9 @@ p {
 }
 .centered {
     text-align:center;   
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #logo{
@@ -101,14 +102,13 @@ p {
     border-left-width: 1px;
     border-right-width: 1px;
     text-align:left;
-    text-overflow:ellipsis-word;
-    display:inline-flex;
+    overflow:ellipsis;
+    display:inline-block;
     white-space:nowrap;
-    overflow: hidden;
     
-    width:12%;
+    width: 60px;
     
-    margin-left: 10%;
+    margin-left: 5px;
     
     padding-top:7px;
     padding-bottom:40px;
@@ -155,12 +155,11 @@ p {
     border-left-width: 1px;
     border-right-width: 1px;
     text-align:left;
-    text-overflow:ellipsis;
     overflow:hidden;
-    display:inline-flex;
+    display:inline-block;
     white-space:nowrap;
-    
-    width: 60%;
+    float:right;
+    width: 500px;
     
     padding-top: 7px;
     padding-right:12px;

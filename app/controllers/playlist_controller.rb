@@ -54,6 +54,13 @@ class PlaylistController < ApplicationController
    end
 
   def remove_track
+    if params[:url]
+      @track = Track.where("url = ? AND playlist_id = ?",params[:url],@playlist.id).first
+      @track.destroy
+    else
+      tracks = @playlist.tracks
+      tracks.first.destroy
+    end
   end
 
   def vote

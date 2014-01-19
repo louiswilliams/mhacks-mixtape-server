@@ -6,7 +6,7 @@
     <div class="track_list_item">
     <button class="Upvote" name="track_id" value="<%= track.id %>"> + <span class="voteCount"><%= votes %></span></button>
     <span id="SongData">
-        <%= data["track"]["artists"][0]["name"] + " - " + data["track"]["name"] + " (" + data["track"]["album"]["name"] + ")" %>
+        <%=  data["track"]["name"] + " - " + data["track"]["artists"][0]["name"] + " (" + data["track"]["album"]["name"] + ")" %>
     </span>
     </div>
 <% end %>
@@ -39,7 +39,7 @@ $("#track_search").keyup(function(e) {
 $(".Upvote").click(function(event) {
     id = $(this).val();
     $.post("/playlist/" + playlistCode + "/vote", {track_id: id}, function(data) {
-        alert(data);
+        // alert(data);
     });
 });
 
